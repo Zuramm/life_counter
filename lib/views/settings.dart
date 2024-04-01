@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'counter.dart';
+
 class Settings extends StatefulWidget {
   const Settings({super.key});
 

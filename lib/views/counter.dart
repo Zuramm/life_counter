@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import '../components/player.dart';
 
 class Counter extends StatelessWidget {
   const Counter({
