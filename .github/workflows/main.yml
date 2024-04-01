@@ -30,15 +30,9 @@ jobs:
 
       - name: Build apk
         run: flutter build apk
-      
-      - name: archive
-        shell: bash
-        run: |
-          tar -czf "build.tar.gz" "build"
-          echo "ASSET=build.tar.gz" >> $GITHUB_ENV
 
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            ${{ env.ASSET }}
+            build/app/outputs/flutter-apk/app-release.apk
