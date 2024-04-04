@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../components/player.dart';
@@ -22,12 +23,15 @@ class _CounterState extends State<Counter> {
   void initState() {
     super.initState();
     Wakelock.enable();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
   }
 
   @override
   void dispose() {
     super.dispose();
     Wakelock.disable();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
   }
 
   @override
