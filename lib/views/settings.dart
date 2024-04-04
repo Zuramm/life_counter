@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 import 'counter.dart';
 
@@ -117,8 +118,13 @@ class _SettingsState extends State<Settings> {
                     .map<ButtonSegment<int>>(
                       (int value) => ButtonSegment<int>(
                           value: value,
-                          label:
-                              Text(value == 0 ? "Custom" : value.toString())),
+                          label: Text(
+                            value == 0
+                                ? ([10, 20, 30, 40, 50].contains(startingLife)
+                                    ? "*"
+                                    : "[$startingLife]")
+                                : value.toString(),
+                          )),
                     )
                     .toList(),
               ),
