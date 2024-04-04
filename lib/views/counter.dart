@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wakelock/wakelock.dart';
 
 import '../components/player.dart';
 
-class Counter extends StatelessWidget {
+class Counter extends StatefulWidget {
   const Counter({
     super.key,
     required this.players,
@@ -13,14 +14,31 @@ class Counter extends StatelessWidget {
   final int startingLife;
 
   @override
+  State<Counter> createState() => _CounterState();
+}
+
+class _CounterState extends State<Counter> {
+  @override
+  void initState() {
+    super.initState();
+    Wakelock.enable();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Wakelock.disable();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Widget layout;
 
-    switch (players) {
+    switch (widget.players) {
       case 1:
         layout = Player(
           player: 0,
-          startingLife: startingLife,
+          startingLife: widget.startingLife,
         );
         break;
       case 2:
@@ -31,14 +49,14 @@ class Counter extends StatelessWidget {
                 quarterTurns: 2,
                 child: Player(
                   player: 0,
-                  startingLife: startingLife,
+                  startingLife: widget.startingLife,
                 ),
               ),
             ),
             Expanded(
               child: Player(
                 player: 1,
-                startingLife: startingLife,
+                startingLife: widget.startingLife,
               ),
             ),
           ],
@@ -52,7 +70,7 @@ class Counter extends StatelessWidget {
                 quarterTurns: 2,
                 child: Player(
                   player: 0,
-                  startingLife: startingLife,
+                  startingLife: widget.startingLife,
                 ),
               ),
             ),
@@ -65,7 +83,7 @@ class Counter extends StatelessWidget {
                       quarterTurns: 1,
                       child: Player(
                         player: 1,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                   ),
@@ -74,7 +92,7 @@ class Counter extends StatelessWidget {
                       quarterTurns: 3,
                       child: Player(
                         player: 2,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                   ),
@@ -95,13 +113,13 @@ class Counter extends StatelessWidget {
                     Expanded(
                       child: Player(
                         player: 0,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                     Expanded(
                       child: Player(
                         player: 1,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                   ],
@@ -116,13 +134,13 @@ class Counter extends StatelessWidget {
                     Expanded(
                       child: Player(
                         player: 2,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                     Expanded(
                       child: Player(
                         player: 3,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                   ],
@@ -140,7 +158,7 @@ class Counter extends StatelessWidget {
                 quarterTurns: 2,
                 child: Player(
                   player: 0,
-                  startingLife: startingLife,
+                  startingLife: widget.startingLife,
                 ),
               ),
             ),
@@ -156,13 +174,13 @@ class Counter extends StatelessWidget {
                           Expanded(
                             child: Player(
                               player: 1,
-                              startingLife: startingLife,
+                              startingLife: widget.startingLife,
                             ),
                           ),
                           Expanded(
                             child: Player(
                               player: 2,
-                              startingLife: startingLife,
+                              startingLife: widget.startingLife,
                             ),
                           ),
                         ],
@@ -177,13 +195,13 @@ class Counter extends StatelessWidget {
                           Expanded(
                             child: Player(
                               player: 3,
-                              startingLife: startingLife,
+                              startingLife: widget.startingLife,
                             ),
                           ),
                           Expanded(
                             child: Player(
                               player: 4,
-                              startingLife: startingLife,
+                              startingLife: widget.startingLife,
                             ),
                           ),
                         ],
@@ -207,19 +225,19 @@ class Counter extends StatelessWidget {
                     Expanded(
                       child: Player(
                         player: 0,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                     Expanded(
                       child: Player(
                         player: 1,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                     Expanded(
                       child: Player(
                         player: 2,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                   ],
@@ -234,19 +252,19 @@ class Counter extends StatelessWidget {
                     Expanded(
                       child: Player(
                         player: 3,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                     Expanded(
                       child: Player(
                         player: 4,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                     Expanded(
                       child: Player(
                         player: 5,
-                        startingLife: startingLife,
+                        startingLife: widget.startingLife,
                       ),
                     ),
                   ],
