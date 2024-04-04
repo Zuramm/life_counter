@@ -1,11 +1,11 @@
 {
-    "name": "life_counter",
-    "short_name": "life_counter",
+    "name": "Life Counter",
+    "short_name": "Life Counter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Count life for up to 6 players for games like Magic the Gathering.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
