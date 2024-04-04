@@ -257,7 +257,7 @@ class Counter extends StatelessWidget {
         );
         break;
       default:
-        layout = Center(
+        layout = const Center(
           child: Text("Invalid number of players"),
         );
         break;
@@ -280,7 +280,7 @@ class Counter extends StatelessWidget {
               },
             ),
           ),
-          Center(
+          const Center(
             child: BackButton(),
           )
         ],

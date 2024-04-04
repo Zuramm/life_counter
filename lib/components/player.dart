@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class Player extends StatefulWidget {
   const Player({
@@ -19,7 +18,7 @@ class _PlayerState extends State<Player> {
   int life = 0;
   String name = "Player";
 
-  TextEditingController _textFieldController = TextEditingController();
+  final TextEditingController _textFieldController = TextEditingController();
 
   @override
   void initState() {
@@ -32,20 +31,23 @@ class _PlayerState extends State<Player> {
 
   @override
   Widget build(BuildContext context) {
+    const buttonStyle = TextStyle(fontSize: 96.0, fontWeight: FontWeight.w100);
     return Column(
       children: [
         Expanded(
           child: Stack(
             children: [
               Center(
-                child: Text(life.toString()),
+                child: Text(life.toString(),
+                    style: const TextStyle(
+                        fontSize: 120.0, fontWeight: FontWeight.w300)),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Expanded(
                     child: TextButton(
-                      child: Text("-"),
+                      child: const Text("-", style: buttonStyle),
                       onPressed: () {
                         setState(() {
                           life -= 1;
@@ -60,7 +62,7 @@ class _PlayerState extends State<Player> {
                   ),
                   Expanded(
                     child: TextButton(
-                      child: Text("+"),
+                      child: const Text("+", style: buttonStyle),
                       onPressed: () {
                         setState(() {
                           life += 1;
@@ -86,20 +88,20 @@ class _PlayerState extends State<Player> {
               builder: (context) {
                 _textFieldController.text = name;
                 return AlertDialog(
-                  title: Text('Change Player Name'),
+                  title: const Text('Change Player Name'),
                   content: TextField(
                     controller: _textFieldController,
-                    decoration: InputDecoration(hintText: "Player Name"),
+                    decoration: const InputDecoration(hintText: "Player Name"),
                   ),
                   actions: <Widget>[
                     TextButton(
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                       onPressed: () {
                         Navigator.pop(context);
                       },
                     ),
                     ElevatedButton(
-                      child: Text('Change'),
+                      child: const Text('Change'),
                       onPressed: () {
                         Navigator.pop(context, _textFieldController.text);
                       },
