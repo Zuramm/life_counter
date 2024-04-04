@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'counter.dart';
 
@@ -12,10 +12,30 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  SharedPreferences? prefs;
+
   int players = 2;
   int startingLife = 20;
 
   final TextEditingController _textFieldController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    loadPrefs();
+  }
+
+  void loadPrefs() async {
+    prefs = await SharedPreferences.getInstance();
+
+    final newPlayers = prefs!.getInt("players");
+    final newStartingLife = prefs!.getInt("startingLife");
+
+    setState(() {
+      players = newPlayers ?? players;
+      startingLife = newStartingLife ?? startingLife;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +64,7 @@ class _SettingsState extends State<Settings> {
                   setState(() {
                     players = newSelection.first;
                   });
+                  prefs?.setInt("players", newSelection.first);
                 },
                 segments: [1, 2, 3, 4, 5, 6]
                     .map<ButtonSegment<int>>(
@@ -112,6 +133,7 @@ class _SettingsState extends State<Settings> {
                     setState(() {
                       startingLife = newStartingLife!;
                     });
+                    prefs?.setInt("startingLife", newStartingLife);
                   }
                 },
                 segments: [10, 20, 30, 40, 50, 0]
